@@ -68,14 +68,8 @@ export default function MobileMenu({
       active: currentPage === "emergency" 
     },
     { 
-      icon: FileText, 
-      label: "Contact Directory", 
-      href: "/ContactDirectory", 
-      active: currentPage === "contact-directory" 
-    },
-    { 
       icon: Calendar, 
-      label: "Programs Drectory", 
+      label: "Programs Directory", 
       href: "/ProgramsDirectory", 
       active: currentPage === "programs-directory" 
     },
@@ -84,6 +78,12 @@ export default function MobileMenu({
       label: "TCN Health", 
       href: "/TCNHealth", 
       active: currentPage === "tcn-health" 
+    },
+    { 
+      icon: Users, 
+      label: "Member Profile", 
+      href: "/MemberPage", 
+      active: currentPage === "member-page" 
     },
     { 
       icon: LogOut, 
@@ -107,8 +107,8 @@ export default function MobileMenu({
   return (
     <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
       <SheetTrigger asChild>
-        <Button variant="ghost" size="sm" className="p-2">
-          <Menu className="h-6 w-6" />
+        <Button variant="ghost" size="default" className="p-2">
+          <Menu className="h-8 w-8" />
         </Button>
       </SheetTrigger>
       <SheetContent side="right" className="w-80">
@@ -123,7 +123,7 @@ export default function MobileMenu({
               className="w-full justify-start gap-3 h-12"
               onClick={() => handleNavigation(item.href)}
             >
-              <item.icon className="h-5 w-5" />
+              <item.icon className="h-8 w-8" />
               {item.label}
             </Button>
           ))}

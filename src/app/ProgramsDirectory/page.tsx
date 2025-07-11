@@ -68,11 +68,11 @@ export default function page() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 pb-20">
       {/* Header with Hamburger Menu */}
-      <div className="bg-white border-b sticky top-0 z-10">
+      <div className="bg-gradient-to-r from-green-800 to-emerald-800 border-b border-green-700 sticky top-0 z-10 shadow-lg">
         <div className="px-4 py-4 flex items-center justify-between">
-          <div className="text-xl font-bold text-gray-900">
+          <div className="text-xl font-bold text-green-50">
             Community Programs Directory
           </div>
           {/* Hamburger Menu */}
@@ -84,59 +84,71 @@ export default function page() {
         {/* Programs Section */}
         <section>
           <div className="flex items-center gap-2 mb-4">
-            <Users className="h-5 w-5 text-blue-600" />
-            <h2 className="text-lg font-semibold text-gray-900">
+            <Users className="h-5 w-5 text-emerald-700" />
+            <h2 className="text-lg font-semibold text-green-900">
               Active Programs
             </h2>
           </div>
 
           <div className="space-y-3">
             {programs.map((program) => (
-              <Card key={program.id} className="shadow-sm">
+              <Card 
+                key={program.id} 
+                className="shadow-md bg-white/80 backdrop-blur-sm border-green-200 hover:shadow-lg transition-shadow"
+              >
                 <CardHeader className="pb-3">
                   <div className="flex items-start justify-between">
-                    <CardTitle className="text-base leading-tight">
+                    <CardTitle className="text-base leading-tight text-green-900">
                       {program.title}
                     </CardTitle>
                     <Badge
-                      variant={
-                        program.status === "Open" ? "default" : "secondary"
-                      }
-                      className="text-xs"
+                      variant="outline"
+                      className={`text-xs ${
+                        program.status === "Open" 
+                          ? "bg-green-50 text-green-800 border-green-200" 
+                          : "bg-amber-50 text-amber-800 border-amber-200"
+                      }`}
                     >
                       {program.status}
                     </Badge>
                   </div>
                 </CardHeader>
                 <CardContent className="pt-0 space-y-3">
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-green-800">
                     {program.description}
                   </p>
 
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 text-sm">
-                      <Clock className="h-4 w-4 text-gray-400" />
-                      <span>{program.schedule}</span>
+                      <Clock className="h-4 w-4 text-green-600" />
+                      <span className="text-green-700">{program.schedule}</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm">
-                      <Users className="h-4 w-4 text-gray-400" />
-                      <span>{program.participants} participants</span>
+                      <Users className="h-4 w-4 text-green-600" />
+                      <span className="text-green-700">{program.participants} participants</span>
                     </div>
                   </div>
 
-                  <Separator />
+                  <Separator className="bg-green-200" />
 
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium">{program.contact}</p>
-                      <p className="text-xs text-gray-500">{program.phone}</p>
+                      <p className="text-sm font-medium text-green-900">{program.contact}</p>
+                      <p className="text-xs text-green-600">{program.phone}</p>
                     </div>
                     <div className="flex gap-2">
-                      <Button size="sm" variant="outline" className="h-8 px-3">
+                      <Button 
+                        size="sm" 
+                        variant="outline" 
+                        className="h-8 px-3 border-green-300 text-green-700 hover:bg-green-50"
+                      >
                         <Phone className="h-3 w-3 mr-1" />
                         Call
                       </Button>
-                      <Button size="sm" className="h-8 px-3">
+                      <Button 
+                        size="sm" 
+                        className="h-8 px-3 bg-green-700 hover:bg-green-800 text-white"
+                      >
                         Join
                       </Button>
                     </div>
@@ -149,15 +161,21 @@ export default function page() {
 
         {/* Quick Actions */}
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <h2 className="text-lg font-semibold text-green-900 mb-4">
             Quick Actions
           </h2>
           <div className="grid grid-cols-2 gap-3">
-            <Button variant="outline" className="h-12 flex-col gap-1">
+            <Button 
+              variant="outline" 
+              className="h-12 flex-col gap-1 border-green-300 text-green-700 hover:bg-green-50 bg-white/80 backdrop-blur-sm"
+            >
               <Calendar className="h-4 w-4" />
               <span className="text-xs">View Calendar</span>
             </Button>
-            <Button variant="outline" className="h-12 flex-col gap-1">
+            <Button 
+              variant="outline" 
+              className="h-12 flex-col gap-1 border-green-300 text-green-700 hover:bg-green-50 bg-white/80 backdrop-blur-sm"
+            >
               <ExternalLink className="h-4 w-4" />
               <span className="text-xs">Register Online</span>
             </Button>
@@ -167,57 +185,60 @@ export default function page() {
         {/* Contacts Section */}
         <section>
           <div className="flex items-center gap-2 mb-4">
-            <Phone className="h-5 w-5 text-green-600" />
-            <h2 className="text-lg font-semibold text-gray-900">
+            <Phone className="h-5 w-5 text-teal-700" />
+            <h2 className="text-lg font-semibold text-green-900">
               Important Contacts
             </h2>
           </div>
 
           <div className="space-y-3">
             {contacts.map((contact, index) => (
-              <Card key={index} className="shadow-sm">
+              <Card 
+                key={index} 
+                className="shadow-md bg-white/80 backdrop-blur-sm border-green-200 hover:shadow-lg transition-shadow"
+              >
                 <CardContent className="p-4">
                   <div className="space-y-3">
                     <div>
-                      <h3 className="font-semibold text-gray-900">
+                      <h3 className="font-semibold text-green-900">
                         {contact.name}
                       </h3>
-                      <p className="text-sm text-gray-600">{contact.role}</p>
+                      <p className="text-sm text-green-700">{contact.role}</p>
                     </div>
 
                     <div className="space-y-2">
                       <div className="flex items-center gap-2 text-sm">
-                        <Phone className="h-4 w-4 text-gray-400" />
+                        <Phone className="h-4 w-4 text-green-600" />
                         <a
                           href={`tel:${contact.phone}`}
-                          className="text-blue-600 font-medium"
+                          className="text-emerald-700 font-medium hover:text-emerald-800"
                         >
                           {contact.phone}
                         </a>
                       </div>
                       <div className="flex items-center gap-2 text-sm">
-                        <Mail className="h-4 w-4 text-gray-400" />
+                        <Mail className="h-4 w-4 text-green-600" />
                         <a
                           href={`mailto:${contact.email}`}
-                          className="text-blue-600"
+                          className="text-emerald-700 hover:text-emerald-800"
                         >
                           {contact.email}
                         </a>
                       </div>
                       <div className="flex items-start gap-2 text-sm">
-                        <MapPin className="h-4 w-4 text-gray-400 mt-0.5" />
-                        <span className="text-gray-600">{contact.address}</span>
+                        <MapPin className="h-4 w-4 text-green-600 mt-0.5" />
+                        <span className="text-green-700">{contact.address}</span>
                       </div>
                       <div className="flex items-center gap-2 text-sm">
-                        <Clock className="h-4 w-4 text-gray-400" />
-                        <span className="text-gray-600">{contact.hours}</span>
+                        <Clock className="h-4 w-4 text-green-600" />
+                        <span className="text-green-700">{contact.hours}</span>
                       </div>
                     </div>
 
                     <div className="flex gap-2 pt-2">
                       <Button
                         size="sm"
-                        className="flex-1"
+                        className="flex-1 bg-green-700 hover:bg-green-800 text-white"
                         onClick={() => window.open(`tel:${contact.phone}`)}
                       >
                         <Phone className="h-3 w-3 mr-1" />
@@ -226,7 +247,7 @@ export default function page() {
                       <Button
                         size="sm"
                         variant="outline"
-                        className="flex-1"
+                        className="flex-1 border-green-300 text-green-700 hover:bg-green-50"
                         onClick={() => window.open(`mailto:${contact.email}`)}
                       >
                         <Mail className="h-3 w-3 mr-1" />

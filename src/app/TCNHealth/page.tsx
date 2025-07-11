@@ -180,13 +180,13 @@ export default function HealthWellnessPage() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "accepting":
-        return "bg-green-100 text-green-800 border-green-200";
+        return "bg-green-50 text-green-800 border-green-200";
       case "waitlist":
-        return "bg-yellow-100 text-yellow-800 border-yellow-200";
+        return "bg-amber-50 text-amber-800 border-amber-200";
       case "closed":
-        return "bg-red-100 text-red-800 border-red-200";
+        return "bg-red-50 text-red-800 border-red-200";
       default:
-        return "bg-gray-100 text-gray-800 border-gray-200";
+        return "bg-stone-50 text-stone-800 border-stone-200";
     }
   };
 
@@ -194,15 +194,15 @@ export default function HealthWellnessPage() {
   const regularPrograms = healthPrograms.filter((program) => !program.featured);
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 pb-20">
       {/* Header with Mobile Menu */}
-      <div className="bg-white border-b sticky top-0 z-10">
+      <div className="bg-gradient-to-r from-green-800 to-emerald-800 border-b border-green-700 sticky top-0 z-10 shadow-lg">
         <div className="px-4 py-4 flex items-center justify-between">
           <div>
-            <h1 className="text-xl font-bold text-gray-900">
+            <h1 className="text-xl font-bold text-green-50">
               Health & Wellness
             </h1>
-            <p className="text-sm text-gray-600 mt-1">
+            <p className="text-sm text-green-100 mt-1">
               Community health programs and services
             </p>
           </div>
@@ -211,7 +211,7 @@ export default function HealthWellnessPage() {
       </div>
       <div className="px-4 py-4 space-y-6">
         {/* Emergency Contact Banner */}
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+        <div className="bg-gradient-to-r from-red-50 to-orange-50 border border-red-200 rounded-lg p-4 shadow-md">
           <div className="flex items-center gap-2 mb-2">
             <AlertCircle className="h-5 w-5 text-red-600" />
             <h3 className="font-semibold text-red-900">Emergency Services</h3>
@@ -222,7 +222,7 @@ export default function HealthWellnessPage() {
           </p>
           <Button
             size="sm"
-            className="bg-red-600 hover:bg-red-700"
+            className="bg-red-600 hover:bg-red-700 text-white"
             onClick={() => window.open("tel:5553002000")}
           >
             <Phone className="h-3 w-3 mr-1" />
@@ -234,7 +234,7 @@ export default function HealthWellnessPage() {
           <section>
             <div className="flex items-center gap-2 mb-4">
               <Heart className="h-5 w-5 text-red-600" />
-              <h2 className="text-lg font-semibold text-gray-900">
+              <h2 className="text-lg font-semibold text-green-900">
                 Key Programs
               </h2>
             </div>
@@ -242,11 +242,11 @@ export default function HealthWellnessPage() {
               {featuredPrograms.map((program) => (
                 <Card
                   key={program.id}
-                  className="shadow-sm ring-2 ring-blue-200 bg-blue-50"
+                  className="shadow-lg ring-2 ring-emerald-200 bg-gradient-to-br from-emerald-50 to-teal-50 border-emerald-200"
                 >
                   <CardHeader className="pb-3">
                     <div className="flex items-start justify-between gap-2">
-                      <CardTitle className="text-base leading-tight flex-1">
+                      <CardTitle className="text-base leading-tight flex-1 text-green-900">
                         {program.name}
                       </CardTitle>
                       <Badge
@@ -262,20 +262,20 @@ export default function HealthWellnessPage() {
                     </div>
                   </CardHeader>
                   <CardContent className="pt-0 space-y-3">
-                    <p className="text-sm text-gray-700 leading-relaxed">
+                    <p className="text-sm text-green-800 leading-relaxed">
                       {program.description}
                     </p>
 
                     <div className="space-y-2">
                       <div className="flex items-start gap-2 text-sm">
-                        <Users className="h-4 w-4 text-gray-400 mt-0.5" />
-                        <span>
+                        <Users className="h-4 w-4 text-green-600 mt-0.5" />
+                        <span className="text-green-700">
                           <strong>Eligibility:</strong> {program.eligibility}
                         </span>
                       </div>
                       <div className="flex items-start gap-2 text-sm">
-                        <Activity className="h-4 w-4 text-gray-400 mt-0.5" />
-                        <div>
+                        <Activity className="h-4 w-4 text-green-600 mt-0.5" />
+                        <div className="text-green-700">
                           <strong>Services:</strong>
                           <ul className="mt-1 ml-4 list-disc text-xs space-y-1">
                             {program.services.map((service, index) => (
@@ -285,21 +285,21 @@ export default function HealthWellnessPage() {
                         </div>
                       </div>
                       <div className="flex items-center gap-2 text-sm">
-                        <Clock className="h-4 w-4 text-gray-400" />
-                        <span>{program.hours}</span>
+                        <Clock className="h-4 w-4 text-green-600" />
+                        <span className="text-green-700">{program.hours}</span>
                       </div>
                     </div>
-                    <Separator />
+                    <Separator className="bg-green-200" />
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium">{program.contact}</p>
-                        <p className="text-xs text-gray-500">{program.phone}</p>
+                        <p className="text-sm font-medium text-green-900">{program.contact}</p>
+                        <p className="text-xs text-green-600">{program.phone}</p>
                       </div>
                       <div className="flex gap-2">
                         <Button
                           size="sm"
                           variant="outline"
-                          className="h-8 px-3"
+                          className="h-8 px-3 border-green-300 text-green-700 hover:bg-green-50"
                           onClick={() => window.open(`tel:${program.phone}`)}
                         >
                           <Phone className="h-3 w-3 mr-1" />
@@ -307,7 +307,7 @@ export default function HealthWellnessPage() {
                         </Button>
                         <Button
                           size="sm"
-                          className="h-8 px-3"
+                          className="h-8 px-3 bg-green-700 hover:bg-green-800 text-white"
                           onClick={() => window.open(`mailto:${program.email}`)}
                         >
                           <Mail className="h-3 w-3 mr-1" />
@@ -324,22 +324,25 @@ export default function HealthWellnessPage() {
         {/* All Health Programs */}
         <section>
           <div className="flex items-center gap-2 mb-4">
-            <Baby className="h-5 w-5 text-purple-600" />
-            <h2 className="text-lg font-semibold text-gray-900">
+            <Baby className="h-5 w-5 text-teal-700" />
+            <h2 className="text-lg font-semibold text-green-900">
               Child & Family Programs
             </h2>
           </div>
 
           <div className="space-y-3">
             {regularPrograms.map((program) => (
-              <Card key={program.id} className="shadow-sm">
+              <Card 
+                key={program.id} 
+                className="shadow-md bg-white/80 backdrop-blur-sm border-green-200 hover:shadow-lg transition-shadow"
+              >
                 <CardHeader className="pb-3">
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex items-center gap-2 flex-1">
                       {program.urgent && (
                         <AlertCircle className="h-4 w-4 text-red-600" />
                       )}
-                      <CardTitle className="text-base leading-tight">
+                      <CardTitle className="text-base leading-tight text-green-900">
                         {program.name}
                       </CardTitle>
                     </div>
@@ -356,20 +359,20 @@ export default function HealthWellnessPage() {
                   </div>
                 </CardHeader>
                 <CardContent className="pt-0 space-y-3">
-                  <p className="text-sm text-gray-700 leading-relaxed">
+                  <p className="text-sm text-green-800 leading-relaxed">
                     {program.description}
                   </p>
 
                   <div className="space-y-2">
                     <div className="flex items-start gap-2 text-sm">
-                      <Users className="h-4 w-4 text-gray-400 mt-0.5" />
-                      <span>
+                      <Users className="h-4 w-4 text-green-600 mt-0.5" />
+                      <span className="text-green-700">
                         <strong>Eligibility:</strong> {program.eligibility}
                       </span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <Activity className="h-4 w-4 text-gray-400 mt-0.5" />
-                      <div>
+                      <Activity className="h-4 w-4 text-green-600 mt-0.5" />
+                      <div className="text-green-700">
                         <strong>Services:</strong>
                         <ul className="mt-1 ml-4 list-disc text-xs space-y-1">
                           {program.services.map((service, index) => (
@@ -379,23 +382,23 @@ export default function HealthWellnessPage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-2 text-sm">
-                      <Clock className="h-4 w-4 text-gray-400" />
-                      <span>{program.hours}</span>
+                      <Clock className="h-4 w-4 text-green-600" />
+                      <span className="text-green-700">{program.hours}</span>
                     </div>
                   </div>
 
-                  <Separator />
+                  <Separator className="bg-green-200" />
 
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium">{program.contact}</p>
-                      <p className="text-xs text-gray-500">{program.phone}</p>
+                      <p className="text-sm font-medium text-green-900">{program.contact}</p>
+                      <p className="text-xs text-green-600">{program.phone}</p>
                     </div>
                     <div className="flex gap-2">
                       <Button
                         size="sm"
                         variant="outline"
-                        className="h-8 px-3"
+                        className="h-8 px-3 border-green-300 text-green-700 hover:bg-green-50"
                         onClick={() => window.open(`tel:${program.phone}`)}
                       >
                         <Phone className="h-3 w-3 mr-1" />
@@ -403,7 +406,7 @@ export default function HealthWellnessPage() {
                       </Button>
                       <Button
                         size="sm"
-                        className="h-8 px-3"
+                        className="h-8 px-3 bg-green-700 hover:bg-green-800 text-white"
                         onClick={() => window.open(`mailto:${program.email}`)}
                       >
                         <Mail className="h-3 w-3 mr-1" />
@@ -420,94 +423,94 @@ export default function HealthWellnessPage() {
         {/* Nursing Station Contact Panel */}
         <section>
           <div className="flex items-center gap-2 mb-4">
-            <Stethoscope className="h-5 w-5 text-green-600" />
-            <h2 className="text-lg font-semibold text-gray-900">
+            <Stethoscope className="h-5 w-5 text-emerald-700" />
+            <h2 className="text-lg font-semibold text-green-900">
               Community Nursing Station
             </h2>
           </div>
 
-          <Card className="shadow-sm ring-2 ring-green-200 bg-green-50">
+          <Card className="shadow-lg ring-2 ring-green-200 bg-gradient-to-br from-green-50 to-emerald-50 border-green-200">
             <CardHeader className="pb-3">
-              <CardTitle className="text-base">{nursingStation.name}</CardTitle>
+              <CardTitle className="text-base text-green-900">{nursingStation.name}</CardTitle>
             </CardHeader>
             <CardContent className="pt-0 space-y-4">
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-sm">
-                  <MapPin className="h-4 w-4 text-gray-400" />
-                  <span>{nursingStation.address}</span>
+                  <MapPin className="h-4 w-4 text-green-600" />
+                  <span className="text-green-700">{nursingStation.address}</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
-                  <Phone className="h-4 w-4 text-gray-400" />
+                  <Phone className="h-4 w-4 text-green-600" />
                   <a
                     href={`tel:${nursingStation.mainPhone}`}
-                    className="text-blue-600 font-medium"
+                    className="text-emerald-700 font-medium hover:text-emerald-800"
                   >
                     {nursingStation.mainPhone}
                   </a>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
-                  <AlertCircle className="h-4 w-4 text-red-400" />
+                  <AlertCircle className="h-4 w-4 text-red-600" />
                   <a
                     href={`tel:${nursingStation.emergencyPhone}`}
-                    className="text-red-600 font-medium"
+                    className="text-red-700 font-medium hover:text-red-800"
                   >
                     Emergency: {nursingStation.emergencyPhone}
                   </a>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
-                  <Mail className="h-4 w-4 text-gray-400" />
+                  <Mail className="h-4 w-4 text-green-600" />
                   <a
                     href={`mailto:${nursingStation.email}`}
-                    className="text-blue-600"
+                    className="text-emerald-700 hover:text-emerald-800"
                   >
                     {nursingStation.email}
                   </a>
                 </div>
               </div>
 
-              <Separator />
+              <Separator className="bg-green-200" />
 
               <div>
-                <h4 className="font-medium text-sm mb-2">Hours of Operation</h4>
-                <div className="space-y-1 text-sm text-gray-600">
+                <h4 className="font-medium text-sm mb-2 text-green-900">Hours of Operation</h4>
+                <div className="space-y-1 text-sm text-green-700">
                   <p>Regular: {nursingStation.hours.regular}</p>
                   <p>Weekend: {nursingStation.hours.weekend}</p>
-                  <p className="text-green-700 font-medium">
+                  <p className="text-emerald-800 font-medium">
                     {nursingStation.hours.emergency}
                   </p>
                 </div>
               </div>
 
-              <Separator />
+              <Separator className="bg-green-200" />
 
               <div>
-                <h4 className="font-medium text-sm mb-2">Services Available</h4>
+                <h4 className="font-medium text-sm mb-2 text-green-900">Services Available</h4>
                 <div className="grid grid-cols-2 gap-1 text-xs">
                   {nursingStation.services.map((service, index) => (
                     <div key={index} className="flex items-center gap-1">
                       <div className="w-1 h-1 bg-green-600 rounded-full"></div>
-                      <span>{service}</span>
+                      <span className="text-green-700">{service}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <Separator />
+              <Separator className="bg-green-200" />
 
               <div>
-                <h4 className="font-medium text-sm mb-2">Staff</h4>
+                <h4 className="font-medium text-sm mb-2 text-green-900">Staff</h4>
                 <div className="space-y-2">
                   {nursingStation.staff.map((staff, index) => (
                     <div key={index} className="text-sm">
-                      <p className="font-medium">{staff.name}</p>
-                      <p className="text-gray-600 text-xs">{staff.title}</p>
+                      <p className="font-medium text-green-900">{staff.name}</p>
+                      <p className="text-green-700 text-xs">{staff.title}</p>
                       {staff.specialties && (
-                        <p className="text-gray-500 text-xs">
+                        <p className="text-green-600 text-xs">
                           Specialties: {staff.specialties.join(", ")}
                         </p>
                       )}
                       {staff.schedule && (
-                        <p className="text-gray-500 text-xs">
+                        <p className="text-green-600 text-xs">
                           Available: {staff.schedule}
                         </p>
                       )}
@@ -518,7 +521,7 @@ export default function HealthWellnessPage() {
 
               <div className="flex gap-2 pt-2">
                 <Button
-                  className="flex-1"
+                  className="flex-1 bg-green-700 hover:bg-green-800 text-white"
                   onClick={() => window.open(`tel:${nursingStation.mainPhone}`)}
                 >
                   <Phone className="h-3 w-3 mr-1" />
@@ -526,7 +529,7 @@ export default function HealthWellnessPage() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="flex-1"
+                  className="flex-1 border-green-300 text-green-700 hover:bg-green-50"
                   onClick={() => window.open(`mailto:${nursingStation.email}`)}
                 >
                   <Mail className="h-3 w-3 mr-1" />

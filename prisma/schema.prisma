@@ -24,11 +24,10 @@ model fnmember {
   option         String      @default("none")
   email          String?     @unique
   dependents     Int?       @default(0)
+  deceased       Boolean    @default(false)
   barcode        Barcode[]
   household      Household[]
   EResponse      EResponse[]
-  EResponseTeam  EResponseTeam[]
-
   @@schema("fnmemberlist")
 }
 
@@ -61,12 +60,13 @@ model User {
   first_name String
   last_name  String
   created    DateTime    @default(now())
-  department String      @default("admin")
+  department String      @default("staff")
   emails     EmailLog[]
   MsgApiLog  MsgApiLog[]
   sessions   Session[]
   smslog     SmsLog[]
-
+  eresponseteam EResponseTeam[]
+  msgcnc MsgCnC[]
   @@schema("msgmanager")
 }
 model Session {
@@ -112,13 +112,31 @@ model MsgApiLog {
   title       String
   content     String
   priority    String
-  type        String    @default("web")
+  type        String    @default("notice")
   created     DateTime  @default(now())
   expiryDate  DateTime?
   isPublished Boolean   @default(false)
   userId      String
   User        User      @relation(fields: [userId], references: [id])
-
+  date        DateTime
+  time        DateTime
+  location    String
+  @@schema("msgmanager")
+}
+model MsgCnC {
+  id          String    @id @default(uuid())
+  title       String
+  content     String
+  priority    String
+  type        String    @default("notice")
+  created     DateTime  @default(now())
+  expiryDate  DateTime?
+  isPublished Boolean   @default(false)
+  userId      String
+  User        User      @relation(fields: [userId], references: [id])
+  date        DateTime
+  time        DateTime
+  location    String
   @@schema("msgmanager")
 }
 
@@ -128,16 +146,28 @@ model EResponse {
   updated     DateTime @default(now())
   fnmemberId  String
   fnmember    fnmember @relation(fields: [fnmemberId], references: [id], onDelete: Cascade)
-  
+  evac_destination String
+  relocation_desination String
+  travel_type  String
+  dep_travel_date  DateTime
+  ret_travel_date DateTime
+  dep_musterpoint String
+  dep_location String
+  ret_musterpoint String
+  ret_location String
+  accommodation_type String
+  accommodation_location String
+  medical_status String
+  registered  Boolean @default(false)
+  approved    Boolean @default(false)
   @@schema("fnmemberlist")
 }
 
 model EResponseTeam {
-  id          String @id @default(uuid())
+  id          Int @id @default(autoincrement())
   created     DateTime @default(now())
   updated     DateTime @default(now())
-  fnmemberId  String
-  fnmember    fnmember @relation(fields: [fnmemberId], references: [id], onDelete: Cascade)
-  
-  @@schema("fnmemberlist")
+  userId      String
+  User        User   @relation(fields: [userId], references: [id])
+  @@schema("msgmanager")
 }
